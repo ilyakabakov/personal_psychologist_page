@@ -1,0 +1,29 @@
+{% extends 'personalpage/base.html'%}
+
+{% block title %}
+{% for item in text %}
+        {{ item.name }}
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+    <p class="lead">
+        {% if text %}
+            {% for item in text %}
+                <div>
+                    <h1>{{ item.title|safe }}</h1>
+                    <p  align="left">{{ item.text|safe }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p> Что-то пошло не так. Уже чиним! </p>
+        {% endif %}
+    </p>
+{% endblock %}
+
+{% block button %}
+    <p class="lead">
+            <a href="query" class="btn btn-lg btn-light fw-bold border-white bg-white">Записаться на консультацию</a>
+    </p>
+{% endblock %}
+

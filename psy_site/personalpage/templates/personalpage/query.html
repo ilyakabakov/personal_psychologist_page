@@ -1,0 +1,21 @@
+{% extends 'personalpage/base.html'%}
+
+{% block title %}
+    Заявка на консультацию
+{% endblock %}
+
+{% block content %}
+    <h1>Заявка на консультацию</h1>
+    <p class="lead">Заполните пожалуйста форму:<br><br>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.name }}<br>
+            {{ form.phone }}<br>
+            {{ form.gmt }}<br>
+            {{ form.query }}<br>
+            <button type="submit" class="btn btn-lg btn-light fw-bold border-white bg-white">Отправить заявку</button>
+            <span>{{ err }}</span>
+        </form>
+        Все поля обязательные для заполнения.
+    </p>
+{% endblock %}
