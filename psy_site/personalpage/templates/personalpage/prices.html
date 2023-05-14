@@ -1,15 +1,15 @@
 {% extends 'personalpage/base.html'%}
 
 {% block title %}
-    {% for item in text %}
+    {% for item in text1 %}
         {{ item.name }}
     {% endfor %}
 {% endblock %}
 
 {% block content %}
     <p class="lead">
-        {% if text %}
-            {% for item in text %}
+        {% if text1 %}
+            {% for item in text1 %}
                 <div>
                     <h1>{{ item.title }}</h1>
                     <p>{{ item.text_1|safe }}</p>
@@ -19,13 +19,76 @@
             <p> Что-то пошло не так. Уже чиним! </p>
         {% endif %}
     </p>
-
-    <br>
 {% endblock %}
 
 {% block table %}
+    {% if text2 %}
+        <tbody>
+        {% for item in text2 %}
+            {% if item.id <= 7 %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td><b>{{ item.service }}</b></td>
+                <td>{{ item.duration }}</td>
+                <td><b>{{ item.price }} Руб.</b></td>
+            </tr><br>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    {% else %}
+        <p> Table is not available! </p>
+    {% endif %}
 {% endblock %}
 
+{% block content2 %}
+<p class="lead">
+        {% if text1 %}
+            {% for item in text1 %}
+                <div>
+
+                    <p>{{ item.text_2|safe }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p> Что-то пошло не так. Уже чиним! </p>
+        {% endif %}
+    </p>
+{% endblock %}
+
+{% block table2 %}
+    {% if text2 %}
+        <tbody>
+        {% for item in text2 %}
+            {% if item.id > 7 %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td><b>{{ item.service }} </b></td>
+                <td>{{ item.duration }} </td>
+                <td><b>{{ item.price }} GEL</b></td>
+            </tr><br>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    {% else %}
+        <p> Table is not available! </p>
+    {% endif %}
+{% endblock %}
+
+{% block content3 %}
+<p class="lead">
+        {% if text1 %}
+            {% for item in text1 %}
+                <div>
+
+                    <p>{{ item.text_3|safe }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p> Что-то пошло не так. Уже чиним! </p>
+        {% endif %}
+    </p>
+
+{% endblock %}
 {% block button %}
     <p class="lead">
             <a href="query" class="btn btn-lg btn-light fw-bold border-white bg-white">Записаться на консультацию</a>

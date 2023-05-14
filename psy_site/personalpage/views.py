@@ -30,25 +30,14 @@ class AboutPageView(generic.TemplateView):
         return context
 
 
-class PricesPageView(generic.TemplateView):
-    template_name = 'personalpage/prices.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['text'] = PricesPageContent.objects.all()
-        return context
+def prices(request):
+    text_array = PricesPageContent.objects.all()
+    text_array2 = Service.objects.all()
+    context = {'text1': text_array, 'text2': text_array2}
+    return render(request, 'personalpage/prices.html', context=context)
 
 
-# def prices(request):
-#    text_array = Service.objects.all()#.order_by('id')[:6]
-#    context = {'array': text_array}
-#    return render(request, 'personalpage/prices.html', context)
-
-
-class ProductPageView(generic.ListView):
-    model = Service
-    template_name = 'personalpage/price_table.html'
-    queryset = Service.objects.all()
+""" NEW CLIENT QUERY """
 
 
 def query(request):

@@ -94,5 +94,5 @@ class Service(models.Model):
         return f'id: {self.id} {self.service}'
 
     class Meta:
-        verbose_name = "Таблица Цен"
+        verbose_name = "Таблица цен"
         verbose_name_plural = "Таблица цен"
