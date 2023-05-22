@@ -1,4 +1,5 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
 """ HOME PAGE MODEL """
 
@@ -46,7 +47,7 @@ class AboutPageContent(models.Model):
                             max_length=128)
     title = models.CharField("Главный заголовок h1",
                              max_length=255, default=None)
-    text = models.TextField("Контент")
+    text = RichTextField("Контент")
 
     def __str__(self):
         return f'id: {self.id} {self.name}'
@@ -96,3 +97,17 @@ class Service(models.Model):
     class Meta:
         verbose_name = "Таблица цен"
         verbose_name_plural = "Таблица цен"
+
+
+class SocialNetworksLinks(models.Model):
+    """ Model for containing social networks account names """
+    name = models.CharField("Название соцсети", max_length=64, default="none")
+    account = models.CharField("Аккаунт", max_length=128,
+                               default="none")
+
+    def __str__(self):
+        return f'id: {self.id}: {self.name}: {self.account}'
+
+    class Meta:
+        verbose_name = "Ссылка на Соцсети"
+        verbose_name_plural = "Ссылки на Соцсети"

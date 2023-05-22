@@ -5,25 +5,30 @@
         {{ item.name }}
     {% endfor %}
 {% endblock %}
-
+<!-- About big text block -->
 {% block content %}
-    <p class="lead">
+    <div align="left">
         {% if text %}
             {% for item in text %}
-                <div>
-                    <h1>{{ item.title|safe }}</h1>
-                    <p  align="left">{{ item.text|safe }}</p>
-                </div>
+
+                <h1 align="center" class="content">{{ item.title }}</h1>
+                <p>{{ item.text|safe }}</p>
+
             {% endfor %}
         {% else %}
             <p> Что-то пошло не так. Уже чиним! </p>
         {% endif %}
-    </p>
+    </div>
+{% endblock %}
+<!-- Block with diploma images -->
+{% block pictures%}
+    <picture>
+        <source srcset="..." type="image/svg+xml">
+        <img src="..." class="rounded mx-auto d-block" alt="...">
+    </picture>
 {% endblock %}
 
 {% block button %}
-    <p class="lead">
-            <a href="query" class="btn btn-lg btn-light fw-bold border-white bg-white">Записаться на консультацию</a>
-    </p>
+        <button class="button"><a href="query">Записаться на консультацию</a></button>
 {% endblock %}
 

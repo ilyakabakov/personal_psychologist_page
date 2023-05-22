@@ -2,14 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import generic
 
 from .forms import NewClientForm
-from .models import HomePageContent, AboutPageContent, PricesPageContent, Service
-
-
-# def index(request):
-#     text_container = HomePageContent.objects.order_by('id')[:1]
-#     context = {'title': 'Главная страница сайта',
-#                'text': text_container}
-#     return render(request, 'personalpage/index.html', context)
+from .models import HomePageContent, AboutPageContent, PricesPageContent, Service, SocialNetworksLinks
 
 
 class HomePageView(generic.TemplateView):
@@ -18,6 +11,7 @@ class HomePageView(generic.TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['text'] = HomePageContent.objects.all()
+        context['links'] = SocialNetworksLinks.objects.all()
         return context
 
 
@@ -27,20 +21,26 @@ class AboutPageView(generic.TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['text'] = AboutPageContent.objects.all()
+        context['links'] = SocialNetworksLinks.objects.all()
         return context
 
 
-def prices(request):
-    text_array = PricesPageContent.objects.all()
-    text_array2 = Service.objects.all()
-    context = {'text1': text_array, 'text2': text_array2}
-    return render(request, 'personalpage/prices.html', context=context)
+class PricesPageView(generic.TemplateView):
+    template_name = 'personalpage/prices.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['text1'] = PricesPageContent.objects.all()
+        context['text2'] = Service.objects.all()
+        context['links'] = SocialNetworksLinks.objects.all()
+        return context
 
 
 """ NEW CLIENT QUERY """
 
 
 def query(request):
+    links = SocialNetworksLinks.objects.all()
     err = ''
     if request.method == "POST":
         form = NewClientForm(request.POST)
@@ -53,6 +53,7 @@ def query(request):
     form = NewClientForm()
     context = {
         'form': form,
-        'err': err
+        'err': err,
+        'links': links
     }
     return render(request, 'personalpage/query.html', context)

@@ -11,7 +11,7 @@
         {% if text1 %}
             {% for item in text1 %}
                 <div>
-                    <h1>{{ item.title }}</h1>
+                    <h1 class="content">{{ item.title }}</h1>
                     <p>{{ item.text_1|safe }}</p>
                 </div>
             {% endfor %}
@@ -23,18 +23,28 @@
 
 {% block table %}
     {% if text2 %}
-        <tbody>
-        {% for item in text2 %}
-            {% if item.id <= 7 %}
-            <tr>
-                <td>{{ item.id }}</td>
-                <td><b>{{ item.service }}</b></td>
-                <td>{{ item.duration }}</td>
-                <td><b>{{ item.price }} Руб.</b></td>
-            </tr><br>
-            {% endif %}
-        {% endfor %}
-        </tbody>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Услуга</th>
+                    <th>Продолжительность</th>
+                    <th>Цена</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                    {% for item in text2 %}
+                        {% if item.id <= 7 %}
+                        <tr>
+                            <td>{{ item.service }}</td>
+                            <td>{{ item.duration }}</td>
+                            <td>{{ item.price }} RUB</td>
+                        </tr>
+                        {% endif %}
+                    {% endfor %}
+
+            </tbody>
+        </table>
     {% else %}
         <p> Table is not available! </p>
     {% endif %}
@@ -57,18 +67,27 @@
 
 {% block table2 %}
     {% if text2 %}
-        <tbody>
-        {% for item in text2 %}
-            {% if item.id > 7 %}
-            <tr>
-                <td>{{ item.id }}</td>
-                <td><b>{{ item.service }} </b></td>
-                <td>{{ item.duration }} </td>
-                <td><b>{{ item.price }} GEL</b></td>
-            </tr><br>
-            {% endif %}
-        {% endfor %}
-        </tbody>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Услуга</th>
+                    <th>Продолжительность</th>
+                    <th>Цена</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            {% for item in text2 %}
+                {% if item.id > 7 %}
+                <tr>
+                    <td>{{ item.service }}</td>
+                    <td>{{ item.duration }}</td>
+                    <td>{{ item.price }} GEL</td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
     {% else %}
         <p> Table is not available! </p>
     {% endif %}
@@ -86,11 +105,9 @@
         {% else %}
             <p> Что-то пошло не так. Уже чиним! </p>
         {% endif %}
-    </p>
+</p>
 
 {% endblock %}
 {% block button %}
-    <p class="lead">
-            <a href="query" class="btn btn-lg btn-light fw-bold border-white bg-white">Записаться на консультацию</a>
-    </p>
+        <button class="button"><a href="query">Записаться на консультацию</a></button>
 {% endblock %}
