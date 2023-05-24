@@ -1,9 +1,11 @@
 {% extends 'personalpage/base.html'%}
 
+<!-- Title of the page -->
 {% block title %}
     Заявка на консультацию
 {% endblock %}
 
+<!-- Registry Form -->
 {% block content %}
     <h1>Заявка на консультацию</h1>
     <p class="lead">Заполните пожалуйста форму:<br><br>
@@ -16,6 +18,6 @@
             <button type="submit" class="button">Отправить заявку</button>
             <span>{{ err }}</span>
         </form>
-        Все поля обязательные для заполнения.
+        Необходимо заполнить все поля.
     </p>
 {% endblock %}

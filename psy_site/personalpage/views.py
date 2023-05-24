@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import generic
 
 from .forms import NewClientForm
-from .models import HomePageContent, AboutPageContent, PricesPageContent, Service, SocialNetworksLinks
+from .models import HomePageContent, AboutPageContent, PricesPageContent, Service, SocialNetworksLinks, PicsForAboutPage
 
 
 class HomePageView(generic.TemplateView):
@@ -22,6 +22,7 @@ class AboutPageView(generic.TemplateView):
         context = super().get_context_data(**kwargs)
         context['text'] = AboutPageContent.objects.all()
         context['links'] = SocialNetworksLinks.objects.all()
+        context['images'] = PicsForAboutPage.objects.all()
         return context
 
 
@@ -57,3 +58,10 @@ def query(request):
         'links': links
     }
     return render(request, 'personalpage/query.html', context)
+
+
+""" 404 page not found """
+
+
+def page_not_found_view(request, exception):
+    return render(request, '404.html', status=404)

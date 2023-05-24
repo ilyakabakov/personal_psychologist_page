@@ -1,34 +1,63 @@
 {% extends 'personalpage/base.html'%}
+{% load static %}
 
+<!-- Title of the page -->
 {% block title %}
 {% for item in text %}
-        {{ item.name }}
+        {{ item.name|upper }}
     {% endfor %}
 {% endblock %}
+
 <!-- About big text block -->
 {% block content %}
     <div align="left">
         {% if text %}
             {% for item in text %}
 
-                <h1 align="center" class="content">{{ item.title }}</h1>
+                <h1 align="center" class="content">{{ item.title|safe }}</h1>
                 <p>{{ item.text|safe }}</p>
 
             {% endfor %}
         {% else %}
-            <p> Что-то пошло не так. Уже чиним! </p>
+            <p> Упс. Что-то пошло не так. Уже чиним! </p>
         {% endif %}
     </div>
 {% endblock %}
+
 <!-- Block with diploma images -->
 {% block pictures%}
-    <picture>
-        <source srcset="..." type="image/svg+xml">
-        <img src="..." class="rounded mx-auto d-block" alt="...">
-    </picture>
+    <!-- Slideshow container -->
+    <h3 class="content">Мои сертификаты и дипломы:</h3>
+    <div class="slideshow-container">
+
+        <!--Cycle of Full-width images with their number -->
+        {% if images %}
+            {% for pic in images %}
+                <div class="mySlides fade-p">
+                    <div class="numbertext">{{ pic.id }}</div>
+                    <img src="{{ pic.picture.url }}" style="width:100%" alt="{{ pic.name }}">
+                </div>
+            {% endfor %}
+        {% else %}
+            <p> У меня настолько много сертификатов и дипломов, что они сюда не поместились!<br>Правда, правда!</p>
+        {% endif %}
+        <!-- Next and previous buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br>
+
+    <!-- The dots/circles -->
+    <div style="text-align:center">
+        {% for pic in  images %}
+            <span class="dot" onclick="currentSlide({{ pic.id }})"></span>
+        {% endfor %}
+    </div><br>
+    <script async src="{% static '/js/slideshow.js'%}"></script>
 {% endblock %}
 
+<!-- Button leading to the page with the form -->
 {% block button %}
-        <button class="button"><a href="query">Записаться на консультацию</a></button>
+    <button class="button"><a href="query">Записаться на консультацию</a></button>
 {% endblock %}
 

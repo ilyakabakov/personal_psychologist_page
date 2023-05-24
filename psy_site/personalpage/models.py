@@ -11,7 +11,7 @@ class HomePageContent(models.Model):
                             max_length=255)
     title = models.CharField("Главный заголовок h1",
                              max_length=255, default=None)
-    text = models.TextField("Контент")
+    text = RichTextField("Контент")
 
     def __str__(self):
         return f'id: {self.id} {self.name}'
@@ -111,3 +111,15 @@ class SocialNetworksLinks(models.Model):
     class Meta:
         verbose_name = "Ссылка на Соцсети"
         verbose_name_plural = "Ссылки на Соцсети"
+
+
+class PicsForAboutPage(models.Model):
+    title = models.CharField("Название изображения", max_length=64)
+    picture = models.ImageField(upload_to="education/")
+
+    def __str__(self):
+        return f'id: {self.id}: {self.title}'
+
+    class Meta:
+        verbose_name = "Диплом"
+        verbose_name_plural = "Дипломы"

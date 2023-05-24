@@ -1,18 +1,20 @@
 {% extends 'personalpage/base.html'%}
 
+<!-- Title of the page -->
 {% block title %}
     {% for item in text1 %}
         {{ item.name }}
     {% endfor %}
 {% endblock %}
 
+<!-- Title of the table -->
 {% block content %}
     <p class="lead">
         {% if text1 %}
             {% for item in text1 %}
                 <div>
                     <h1 class="content">{{ item.title }}</h1>
-                    <p>{{ item.text_1|safe }}</p>
+                    <h3 class="content">{{ item.text_1 }}</h3>
                 </div>
             {% endfor %}
         {% else %}
@@ -21,93 +23,95 @@
     </p>
 {% endblock %}
 
+<!-- Table of contents 1st part -->
 {% block table %}
     {% if text2 %}
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>Услуга</th>
-                    <th>Продолжительность</th>
-                    <th>Цена</th>
+                    <th class="content-t">Услуга</th>
+                    <th class="content-t">Продолжительность</th>
+                    <th class="content-t">Цена</th>
                 </tr>
             </thead>
+
             <tbody>
-
-                    {% for item in text2 %}
-                        {% if item.id <= 7 %}
+                {% for item in text2 %}
+                    {% if item.id <= 7 %}
                         <tr>
-                            <td>{{ item.service }}</td>
-                            <td>{{ item.duration }}</td>
-                            <td>{{ item.price }} RUB</td>
+                            <td><b>{{ item.service }}</b></td>
+                            <td><b>{{ item.duration }}</b></td>
+                            <td><b>{{ item.price }} RUB</b></td>
                         </tr>
-                        {% endif %}
-                    {% endfor %}
-
+                    {% endif %}
+                {% endfor %}
             </tbody>
         </table>
     {% else %}
-        <p> Table is not available! </p>
+        <p> Упс. Что-то пошло не так. Уже чиним! </p>
     {% endif %}
 {% endblock %}
 
+<!-- Title of the second part of the table -->
 {% block content2 %}
 <p class="lead">
         {% if text1 %}
             {% for item in text1 %}
                 <div>
-
-                    <p>{{ item.text_2|safe }}</p>
+                    <h3 class="content">{{ item.text_2 }}</h3>
                 </div>
             {% endfor %}
         {% else %}
-            <p> Что-то пошло не так. Уже чиним! </p>
+            <p> Упс. Что-то пошло не так. Уже чиним! </p>
         {% endif %}
     </p>
 {% endblock %}
 
+<!-- Table of contents 2nd part -->
 {% block table2 %}
     {% if text2 %}
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>Услуга</th>
-                    <th>Продолжительность</th>
-                    <th>Цена</th>
+                    <th class="content-t">Услуга</th>
+                    <th class="content-t">Продолжительность</th>
+                    <th class="content-t">Цена</th>
                 </tr>
             </thead>
-            <tbody>
 
-            {% for item in text2 %}
-                {% if item.id > 7 %}
-                <tr>
-                    <td>{{ item.service }}</td>
-                    <td>{{ item.duration }}</td>
-                    <td>{{ item.price }} GEL</td>
-                </tr>
-                {% endif %}
-            {% endfor %}
+            <tbody>
+                {% for item in text2 %}
+                    {% if item.id > 7 %}
+                        <tr>
+                            <td><b>{{ item.service }}</b></td>
+                            <td><b>{{ item.duration }}</b></td>
+                            <td><b>{{ item.price }} GEL</b></td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
             </tbody>
         </table>
     {% else %}
-        <p> Table is not available! </p>
+        <p> Упс. Что-то пошло не так. Уже чиним! </p>
     {% endif %}
 {% endblock %}
 
+<!-- Another text content part -->
 {% block content3 %}
 <p class="lead">
-        {% if text1 %}
-            {% for item in text1 %}
-                <div>
-
-                    <p>{{ item.text_3|safe }}</p>
-                </div>
-            {% endfor %}
-        {% else %}
-            <p> Что-то пошло не так. Уже чиним! </p>
-        {% endif %}
+    {% if text1 %}
+        {% for item in text1 %}
+            <div>
+                <p>{{ item.text_3|safe }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p> Упс. Что-то пошло не так. Уже чиним! </p>
+    {% endif %}
 </p>
-
 {% endblock %}
+
+<!-- Button leading to the page with the form -->
 {% block button %}
-        <button class="button"><a href="query">Записаться на консультацию</a></button>
+    <button class="button"><a href="query">Записаться на консультацию</a></button>
 {% endblock %}

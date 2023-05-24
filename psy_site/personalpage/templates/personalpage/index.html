@@ -1,30 +1,34 @@
 {% extends 'personalpage/base.html'%}
 {% load static %}
 
+<!-- Title of the page -->
 {% block title %}
     {% for item in text %}
-        {{ item.name }}
+        {{ item.name|upper }}
     {% endfor %}
 {% endblock %}
 
+<!-- Home page main picture -->
 {% block image %}
-    <img src="{% static 'img/main_pic.png' %}" class= "img-fluid" alt="main img">
+    <img src="{% static 'img/main_pic.png' %}" class="img-fluid" alt="main img">
 {% endblock %}
 
+<!-- Welcome text -->
 {% block content %}
-        {% if text %}
-            {% for item in text %}
-                <div>
-                    <h1 class="content">{{ item.title }}</h1>
-                    <p>{{ item.text|safe }}</p>
-                </div>
-            {% endfor %}
-        {% else %}
-            <p> Что-то пошло не так. Уже чиним! </p>
-        {% endif %}
+    {% if text %}
+        {% for item in text %}
+        <div>
+            <h1 class="content">{{ item.title|upper }}</h1>
+            <p>{{ item.text|safe }}</p>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p> Упс. Что-то пошло не так. Уже чиним! </p>
+    {% endif %}
     <br>
 {% endblock %}
 
+<!-- Button leading to the page with the form -->
 {% block button %}
     <button class="button"><a href="query">Записаться на консультацию</a></button>
 {% endblock %}
