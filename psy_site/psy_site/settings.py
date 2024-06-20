@@ -2,11 +2,9 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv, find_dotenv
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 
 # SECURITY WARNING: keep the secret key used in production secret!
 load_dotenv(find_dotenv())
@@ -28,6 +26,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # installed  packs
     "ckeditor",
+    "ckeditor_uploader",
     # my_applications
     "personalpage",
 ]
@@ -120,7 +119,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # django-ckeditor
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
+CKEDITOR_JQUERY_URL = "https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"
+CKEDITOR_IMAGE_BACKEND = "pillow"
 CKEDITOR_CONFIGS = {
     "default": {
         'toolbar': 'full',

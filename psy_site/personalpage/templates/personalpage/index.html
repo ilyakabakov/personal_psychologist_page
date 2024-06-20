@@ -1,5 +1,6 @@
 {% extends 'personalpage/base.html'%}
 {% load static %}
+{% load my_custom_filters %}
 
 <!-- Title of the page -->
 {% block title %}
@@ -18,7 +19,7 @@
     {% if text %}
         {% for item in text %}
         <div>
-            <h1 class="content">{{ item.title|upper }}</h1>
+            <h1 class="content  text-center">{{ item.title|upper }}</h1>
             <p>{{ item.text|safe }}</p>
         </div>
         {% endfor %}
@@ -31,4 +32,24 @@
 <!-- Button leading to the page with the form -->
 {% block button %}
     <button class="button"><a href="query">Записаться на консультацию</a></button>
+{% endblock %}
+
+{% block posts %}
+ <!--   {% for p in posts %}
+        <div class="col-md-4">
+        <article class="card mb-4">
+            <header class="card-header">
+                -->
+                <!-- <div class="content card-meta">
+                    datetime
+                </div> -->
+<!--                <h4 class="content"><b>{{ p.title|upper }}</b></h4>
+            </header>
+            <div class="content card-body">
+                <p class="card-text">{{ p.body|safe }}</p>
+            </div>
+        </article>
+        </div>
+
+    {% endfor %}-->
 {% endblock %}

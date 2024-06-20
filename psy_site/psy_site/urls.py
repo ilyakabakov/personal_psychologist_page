@@ -16,9 +16,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from django.contrib.staticfiles.storage import staticfiles_storage
+from django.views.generic.base import RedirectView, TemplateView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("personalpage.urls")),
+    path("ckeditor/", include('ckeditor_uploader.urls')),
+    path(
+        'robots.txt',
+        TemplateView.as_view(template_name='robots.txt',
+                             content_type='text/plain')),
+    path(
+        'sitemap.xml',
+        TemplateView.as_view(template_name='sitemap.xml',
+                             content_type='text/plain')),
+    path(
+        "favicon.ico",
+        RedirectView.as_view(url=staticfiles_storage.url("favicon.ico")),
+    ),
 ]

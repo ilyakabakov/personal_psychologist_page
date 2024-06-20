@@ -14,7 +14,7 @@
         {% if text %}
             {% for item in text %}
 
-                <h1 align="center" class="content">{{ item.title|safe }}</h1>
+                <h1 align="center" class="content text-center">{{ item.title|safe }}</h1>
                 <p>{{ item.text|safe }}</p>
 
             {% endfor %}
@@ -26,8 +26,9 @@
 
 <!-- Block with diploma images -->
 {% block pictures%}
-    <!-- Slideshow container -->
-    <h3 class="content">Мои сертификаты и дипломы:</h3>
+    <!-- Slideshow block -->
+    <h3 class="content text-center">Мои сертификаты и дипломы:</h3>
+
     <div class="slideshow-container">
 
         <!--Cycle of Full-width images with their number -->

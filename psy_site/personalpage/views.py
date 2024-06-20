@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from django.views import generic
+from django.views.generic import TemplateView
 
 from .forms import NewClientForm
-from .models import HomePageContent, AboutPageContent, PricesPageContent, Service, SocialNetworksLinks, PicsForAboutPage
+from .models import HomePageContent, AboutPageContent, PricesPageContent, Service, SocialNetworksLinks, \
+    PicsForAboutPage, PostsModel
 
 
 class HomePageView(generic.TemplateView):
@@ -12,6 +14,7 @@ class HomePageView(generic.TemplateView):
         context = super().get_context_data(**kwargs)
         context['text'] = HomePageContent.objects.all()
         context['links'] = SocialNetworksLinks.objects.all()
+        context['posts'] = PostsModel.objects.all()
         return context
 
 

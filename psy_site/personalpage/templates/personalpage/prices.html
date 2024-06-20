@@ -13,7 +13,7 @@
         {% if text1 %}
             {% for item in text1 %}
                 <div>
-                    <h1 class="content">{{ item.title }}</h1>
+                    <h1 class="content  text-center">{{ item.title }}</h1>
                     <h3 class="content">{{ item.text_1 }}</h3>
                 </div>
             {% endfor %}
@@ -26,12 +26,12 @@
 <!-- Table of contents 1st part -->
 {% block table %}
     {% if text2 %}
-        <table class="table table-hover">
+        <table class="table table-hover table-sm">
             <thead>
                 <tr>
-                    <th class="content-t">Услуга</th>
-                    <th class="content-t">Продолжительность</th>
-                    <th class="content-t">Цена</th>
+                    <th class="content-t px-1 py-2">Услуга</th>
+                    <th class="content-t px-1 py-2">Длительность</th>
+                    <th class="content-t px-1 py-2">Цена</th>
                 </tr>
             </thead>
 
@@ -39,8 +39,8 @@
                 {% for item in text2 %}
                     {% if item.id <= 7 %}
                         <tr>
-                            <td><b>{{ item.service }}</b></td>
-                            <td><b>{{ item.duration }}</b></td>
+                            <td><b>{{ item.service|safe }}</b></td>
+                            <td><b>{{ item.duration|safe }}</b></td>
                             <td><b>{{ item.price }} RUB</b></td>
                         </tr>
                     {% endif %}
@@ -73,9 +73,9 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th class="content-t">Услуга</th>
-                    <th class="content-t">Продолжительность</th>
-                    <th class="content-t">Цена</th>
+                    <th class="content-t px-1 py-2">Услуга</th>
+                    <th class="content-t px-1 py-2">Длительность</th>
+                    <th class="content-t px-1 py-2">Цена</th>
                 </tr>
             </thead>
 

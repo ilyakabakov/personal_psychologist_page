@@ -1,3 +1,4 @@
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 from ckeditor.fields import RichTextField
 
@@ -35,6 +36,21 @@ class Client(models.Model):
     class Meta:
         verbose_name = "Заявка"
         verbose_name_plural = "Заявки"
+
+
+class PostsModel(models.Model):
+    """ Posts model """
+
+    title = models.CharField("Тема", max_length=255)
+    thumbnail = models.ImageField(upload_to="")
+    body = RichTextUploadingField("Контент")
+
+    def __str__(self):
+        return f'id: {self.id} Header: {self.title}'
+
+    class Meta:
+        verbose_name = "Пост"
+        verbose_name_plural = "Посты"
 
 
 """ ABOUT PAGE MODEL """
@@ -114,8 +130,9 @@ class SocialNetworksLinks(models.Model):
 
 
 class PicsForAboutPage(models.Model):
+    """ Model for containing images for about page """
     title = models.CharField("Название изображения", max_length=64)
-    picture = models.ImageField(upload_to="education/")
+    picture = models.ImageField(upload_to="education")
 
     def __str__(self):
         return f'id: {self.id}: {self.title}'

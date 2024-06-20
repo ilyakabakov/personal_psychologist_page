@@ -7,17 +7,21 @@
 
 <!-- Registry Form -->
 {% block content %}
-    <h1>Заявка на консультацию</h1>
-    <p class="lead">Заполните пожалуйста форму:<br><br>
+    <h1 class="content text-center pb-2">Заявка на консультацию</h1>
+    <p class="lead pb-1">Заполните, пожалуйста, форму:
         <form method="post">
             {% csrf_token %}
             {{ form.name }}<br>
             {{ form.phone }}<br>
             {{ form.gmt }}<br>
             {{ form.query }}<br>
-            <button type="submit" class="button">Отправить заявку</button>
+            <div class="container text-center">
+            <button type="submit" class="button ">Отправить заявку</button>
             <span>{{ err }}</span>
+                <br>
+                Необходимо заполнить все поля.
+            </div>
         </form>
-        Необходимо заполнить все поля.
+
     </p>
 {% endblock %}
