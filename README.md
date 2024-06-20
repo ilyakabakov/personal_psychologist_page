@@ -1,5 +1,5 @@
-# personal_psychologist_page
-<h1>It's my PET-project in Django.</h1>
+<h1>Personal psycologist page</h1>
+<h3>It's my PET-project in Django.</h3>
 <h3>Now, this is more of a business card site than a useful web application.</h3>
 
 The purpose of this project:
@@ -22,7 +22,6 @@ Now app uses:
 
 In the future I want:
 - Make an admin account (not in the Django admin panel) for interacting with content and users.
-- Add the ability for the admin to write posts and add pictures (not in the Django admin panel).
 - Make a user account.
 - Add user interaction with the site owner through private messages
 - Integrate calendar
