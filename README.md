@@ -19,6 +19,9 @@ Now app uses:
       - personal styles
       - bootstrap
     - small part of JS
+  #
+  This project has been deployed and is available at <b>https://lenakabakova.ru</b>
+  #
 
 In the future I want:
 - Make an admin account (not in the Django admin panel) for interacting with content and users.
